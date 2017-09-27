@@ -27,31 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({secret: 'i can be anything'}));
 
-// passport stuff START
-
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-passport.use(new GoogleStrategy({
-  clientID: '966824217778-gmtjcbbqme1vl04brnseebv3lkav8haq.apps.googleusercontent.com',
-  clientSecret: 'DBsDmyRR9bdrmTpvLyAQ2v0d',
-  callbackURL: 'http://localhost:3000/auth/google/callback'},
-  function(req, accessToken, refreshToken, profile, done) {
-    done(null, profile);
-  }
-));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-// passport uses to put a user object into the session
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-// passport uses to pull a user object back out of the session
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-})
-
-// passport stuff END
+require('./config/passport')(app);
 
 app.use('/', index);
 app.use('/users', users);
