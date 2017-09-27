@@ -30,3 +30,15 @@
 - Dev with Postman
 - Mocha, Should, Sinon (for testing)
 - HATEOAS - HyperText as the Engine of Application State (for self-documentation)
+
+## Social Aggregator
+
+### References
+https://app.pluralsight.com/library/courses/oauth-passport-securing-application
+
+### Worth Noting
+- Express Generator
+- Express
+- OAuth
+- Passport
+- EJS
