@@ -1,20 +1,20 @@
 var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('../../models/UserModel');
 
 module.exports = function() {
-  passport.use(new GoogleStrategy({
-    clientID: '966824217778-gmtjcbbqme1vl04brnseebv3lkav8haq.apps.googleusercontent.com',
-    clientSecret: 'DBsDmyRR9bdrmTpvLyAQ2v0d',
-    callbackURL: 'http://localhost:3000/auth/google/callback',
+  passport.use(new FacebookStrategy({
+    clientID: '478913555829081',
+    clientSecret: 'fa939c94d1b9e76a32b6116de2973776',
+    callbackURL: 'http://localhost:3000/auth/facebook/callback',
     passReqToCallback: true},
     function(req, accessToken, refreshToken, profile, done) {
       var query = {};
       if(req.user) {
-        if(req.user.facebook) {
-          console.log('facebook');
+        if(req.user.google) {
+          console.log('google');
           query = {
-            'facebook.id': req.user.facebook.id
+            'google.id': req.user.google.id
           };
         } else if (req.user.twitter) {
           console.log('twitter');
@@ -24,9 +24,9 @@ module.exports = function() {
         }
         User.findOne(query, function(error, user) {
           if (user) {
-            user.google = {};
-            user.google.id = profile.id;
-            user.google.token = accessToken;
+            user.facebook = {};
+            user.facebook.id = profile.id;
+            user.facebook.token = accessToken;
 
             user.save();
             done(null, user);
@@ -34,7 +34,7 @@ module.exports = function() {
         });
       } else {
         query = {
-          'google.id': profile.id
+          'facebook.id': profile.id
         };
         User.findOne(query, function(error, user) {
           if (user) {
@@ -44,13 +44,16 @@ module.exports = function() {
             console.log('not found');
             user = new User();
 
-            user.email = profile.emails[0].value;
-            user.image = profile._json.image.url;
+            // couldn't get this to work unlike in the video
+            // console.log(profile);
+            // user.email = profile.emails[0].value;
+            // image not included; will get later
+            // user.image = profile._json.image.url;
             user.displayName = profile.displayName;
 
-            user.google = {};
-            user.google.id = profile.id;
-            user.google.token = accessToken;
+            user.facebook = {};
+            user.facebook.id = profile.id;
+            user.facebook.token = accessToken;
 
             user.save();
             done(null, user);

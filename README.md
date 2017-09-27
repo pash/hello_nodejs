@@ -42,3 +42,6 @@ https://app.pluralsight.com/library/courses/oauth-passport-securing-application
 - OAuth
 - Passport
 - EJS
+- Google, Facebook, Twitter Integration
+- Facebook Graph API
+- OAuth

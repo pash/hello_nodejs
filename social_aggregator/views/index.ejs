@@ -1,6 +1,8 @@
-<html>
+<!DOCTYPE html>
   <head>
-    <link rel="stylesheet" href="/lib/boostrap/dist/css/boostrap.min.css">
+    <title>Social Aggregator</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
 
@@ -10,8 +12,10 @@
   <body>
     <div>
       <%= title %>
-      <ul>
+      <ul class="social list-inline">
         <li><a href="/auth/google" class="googleplus"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="/auth/twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="/auth/facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
       </ul>
     </div>
   </body>
