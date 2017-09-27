@@ -16,3 +16,17 @@
 - Bootstrap
 - EJS Templating
 - MongoDB
+
+## RESTful Web Services
+- REpresentation State Transfer
+
+### References
+- https://app.pluralsight.com/library/courses/node-js-express-rest-web-services
+
+### Worth Noting
+- Express
+- MongoDB
+- Mongoose
+- Dev with Postman
+- Mocha, Should, Sinon (for testing)
+- HATEOAS - HyperText as the Engine of Application State (for self-documentation)
